@@ -60,6 +60,11 @@ Report a timing in milliseconds
   - support for events, views and timings in SmartAnalytics class
   - SmartAnalyticsEvent for reporting events more easily
   - SmartAnalyticsView for reporting views more easily
+
+### 1.0.1
+
+- Unity 5.x support release
+  - uses a dictionary instead of a hash table where some functionality was ‘deprecated’ and that causes build errors.
  
 ## Contact Us
 

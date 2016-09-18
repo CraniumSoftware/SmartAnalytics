@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Cranium Software
+// Copyright (c) 2014-2015 Cranium Software
 
 // SmartAnalyticsNetwork
 //
@@ -8,6 +8,7 @@
 // * add support for more HTTP stuff
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class SmartAnalyticsNetwork
@@ -24,12 +25,12 @@ public static class SmartAnalyticsNetwork
 		DummyBehaviour.StartCoroutine( SendGetRequestAsyncHelper( requestString, onComplete ) ) ;
 	}
 	
-	public static void HTTPPostRequest( string requestString, byte[] data, Hashtable headers )
+	public static void HTTPPostRequest( string requestString, byte[] data, Dictionary< string, string > headers )
 	{
 		HTTPPostRequest( requestString, data, headers, null );
 	}
 	
-	public static void HTTPPostRequest( string requestString, byte[] data, Hashtable headers, HTTPRequestComplete onComplete )
+	public static void HTTPPostRequest( string requestString, byte[] data, Dictionary< string, string > headers, HTTPRequestComplete onComplete )
 	{
 		DummyBehaviour.StartCoroutine( SendPostRequestAsyncHelper( requestString, data, headers, onComplete ) ) ;
 	}
@@ -42,7 +43,7 @@ public static class SmartAnalyticsNetwork
 		HandleHTTPRequestCompletion( www, onComplete );
 	}
 	
-	private static IEnumerator SendPostRequestAsyncHelper( string requestString, byte[] data, Hashtable headers, HTTPRequestComplete onComplete )
+	private static IEnumerator SendPostRequestAsyncHelper( string requestString, byte[] data, Dictionary< string, string > headers, HTTPRequestComplete onComplete )
 	{						
 		WWW www = new WWW( requestString, data, headers );
 		yield return www;
